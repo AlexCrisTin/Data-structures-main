@@ -1,16 +1,16 @@
 #include <stdio.h>
 
-void quick(int array[], int lb, int up){
-    int p =array[(lb+up)/2];
+void quick(int array[], int lb,int up){
+    int p = array[(lb+up)/2];
     int i = lb, j = up;
-    while( i < j){
+    while(i < j){
         while(array[i]<p){
             i++;
         }
         while(array[j]>p){
             j--;
         }
-        if(i<=j){
+        if(i <= j){
             int temp = array[j];
             array[j]= array[i];
             array[i]=temp;
@@ -19,10 +19,10 @@ void quick(int array[], int lb, int up){
         }
     }
     if(i < up){
-        quick(array, i , up);
+        quick(array, i, up);
     }
-    if(j > lb){
-        quick(array, lb, j);
+    if(j>lb){
+        quick(array, lb ,j);
     }
 }
 int main(){
