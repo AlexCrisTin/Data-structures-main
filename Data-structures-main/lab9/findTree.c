@@ -19,15 +19,13 @@ node* insert(node* root, int data){
         root->right = insert(root->right, data);
     return root;
 }
-void preorder(node* root){
-    if(root!=NULL){
-        printf("%d ", root->data);
-        preorder(root->left);
-        preorder(root->right);
-    }
+node* search(node* root, int x){
+    if(root == NULL||root->data == x) return root;
+    if(root->data < x) return search(root->right,x);
+    return search(root->left, x);
 }
 int main(){
-    int n;
+    int n, x;
     scanf("%d", &n);
     node* root = NULL;
     for(int i = 0;i <n; i++){
@@ -36,6 +34,22 @@ int main(){
         root= insert(root, val);
     }
 
-    preorder(root);
+    scanf("%d",&x);
+
+    node* result = search(root, x);
+
+    if(result == NULL){
+        printf("NULL");
+    }else{
+        if(result->left)
+            printf("%d ", result->left->data);
+        else
+            printf("NULL");
+
+        if(result->right)
+            printf("%d\n", result->right->data);
+        else
+            printf("NULL");
+    }
 
 }
